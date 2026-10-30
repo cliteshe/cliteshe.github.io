@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Board</title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+        body {
+            background-color: rgb(161, 100, 223);
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+
+        #buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 125px);
+            gap: 5px;
+            justify-content: center;
+            max-width: 100%;
+            margin: auto;
+
+        }
+
+        .btn {
+            background-color: rebeccapurple;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            margin: 0px;
+            font-size: 13pt;
+            font-family: inherit;
+            cursor: pointer;
+            height: 125px;
+        }
+
+        .btn:hover {
+            opacity: 0.7;
+        }
+
+        .btn:focus {
+            outline: none;
+        }
+
+
+        @media screen and (max-width: 600px) {
+            #buttons {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, 60px);
+                gap: 2px;
+                justify-content: center;
+                max-width: 100%;
+                margin: auto;
+
+            }
+
+            .btn {
+                background-color: rebeccapurple;
+                border-radius: 5px;
+                border: none;
+                color: #fff;
+                margin: 0.1rem;
+                font-size: .6rem;
+                font-family: inherit;
+                cursor: pointer;
+                height: 60px;
+            }
+
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div id="audio"></div>
+
+
+    <div id="buttons"></div>
+
+    <script>
+        const sounds = [
+            'aint got no gas',
+            'air horn',
+            'anthem fail',
+            'bongo feet',
+            'boo',
+            'boy aint right',
+            'bunch of questions',
+            'buzzer',
+            'careless whisper',
+            'catch me outside',
+            'cat rap',
+            'cha ching',
+            'cheering',
+            'circus',
+            'clang',
+            'crickets',
+            'crowd gasp',
+            'denied',
+            'doh',
+            'dont worry everybody',
+            'dun dun dun',
+            'eerie',
+            'evil laugh',
+            'fah',
+            'fatality',
+            'finish him',
+            'flawless victory',
+            'get over here',
+            'goat scream',
+            'heavenly music',
+            'help me',
+            'how bout no',
+            'hurt',
+            'i choose you',
+            'i dont think so',
+            'i have done nothing wrong',
+            'im in danger',
+            'im the captain now',
+            'jeopardy',
+            'jumpscare buildup',
+            'killing spree',
+            'laugh track',
+            'mario death',
+            'maury lie',
+            'maury truth',
+            'mii channel',
+            'money please',
+            'mortal kombat',
+            'mreow',
+            'my heart will go on',
+            'nfl',
+            'nooo',
+            'oh brother',
+            'oh snap',
+            'ooomg',
+            'pokemon battle',
+            'pokemon caught',
+            'psycho',
+            'put that cookie down',
+            'red sun in the sky',
+            'rim shot',
+            'sad trombone',
+            'sad violin',
+            'sad violin 2',
+            'saxophones',
+            'scream',
+            'scream2',
+            'seinfeld',
+            'shatter',
+            'shock',
+            'sound of the police',
+            'stop it arnold',
+            'tell me how i serve you',
+            'thats my purse',
+            'that was pathetic',
+            'undertaker bell',
+            'wakin up in the morning',
+            'what did i eat',
+            'what the hell is wrong with you',
+            'why do people run from me',
+            'why do you have to hate',
+            'womp womp',
+            'wow',
+            'wrong',
+            'x files',
+            'yeayuh'
+        ]
+
+        sounds.forEach(sound => {
+            const btn = document.createElement('button');
+            btn.classList.add('btn');
+            btn.innerText = sound;
+            document.getElementById('audio').innerHTML += `<audio id='${sound}' src="sounds/${sound}.mp3"></audio>`
+            btn.addEventListener('click', () => {
+                stopSongs()
+                sound.volume = 1.6;
+                document.getElementById(sound).play()
+                sound.pause();
+                sound.currentTime = 0;
+            })
+
+            document.getElementById('buttons').appendChild(btn)
+        })
+
+        function stopSongs() {
+            sounds.forEach(sound => {
+                const song = document.getElementById(sound)
+                song.pause()
+                song.currentTime = 0;
+            })
+        }
+
+
+    </script>
+
+</body>
+
+</html>
